@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\MailContact;
 use App\Mail\MailNews;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -22,12 +23,12 @@ class ContactController extends Controller
                 'phone' => 'min:2|max:10'
             ],
             [
-                'email.required' => 'Vui lòng nhập email',
-                'email.email' => 'Vui lòng nhập đúng định dạng',
-                'cusname.min' => 'Họ tên quá ngắn',
-                'cusname.max' => 'Họ tên tối đa 50 ký tự',
-                'phone.min' => 'Số điện thoại quá ngắn',
-                'phone.max' => 'Số điện thoại tối đa 10 ký tự',
+                'email.required' => 'Please input your email address',
+                'email.email' => 'Wrong email format',
+                'cusname.min' => 'Name is to short',
+                'cusname.max' => 'Maximum length is 50 character',
+                'phone.min' => 'Phone is to short',
+                'phone.max' => 'Maximum length is 10 character',
             ]
         );
 
@@ -40,8 +41,8 @@ class ContactController extends Controller
         $contact->save();
 
         // Mail::to('marketing@kobevietnam.com.vn')->send(new MailContact($contact));
-
-        return redirect()->back()->with('success', 'Tin nhắn của bạn đã được gửi tới cho bộ phận chăm sóc khách hàng!!!');
+        Alert::success('Congratulation', 'Your message has been sent to the customer service department');
+        return redirect()->back();
     }
 
     public function postNewLetter(Request $req)
@@ -52,20 +53,21 @@ class ContactController extends Controller
                 'email' => 'required|email',
             ],
             [
-                'email.required' => 'Vui lòng nhập email',
-                'email.email' => 'Vui lòng nhập đúng định dạng'
+                'email.required' => 'Please provide your email',
+                'email.email' => 'Wrong format'
             ]
         );
         if (NewLetter::where('email', '=', $req->email)->exists()) {
-            return redirect()->back()->with('success', 'Bạn đã đăng ký!!');
+            Alert::success('Congratulation', 'You are already registered!');
+            return redirect()->back();
         } else {
             $news = new NewLetter();
             $news->email = $req->email;
             $news->save();
 
             // Mail::to('marketing@kobevietnam.com.vn')->send(new MailNews($news));
-
-            return redirect()->back()->with('success', 'Cảm ơn bạn đã đăng ký!!');
+            Alert::success('Congratulation', 'Thank you for your registration!');
+            return redirect()->back();
         }
     }
 }

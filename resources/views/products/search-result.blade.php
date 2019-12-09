@@ -1,6 +1,11 @@
 @extends('master')
-@section('content')
 
+@section('style')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all"
+  rel="stylesheet" type="text/css" />
+@endsection
+
+@section('content')
 <!-- Breadcrumb area Start -->
 <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
   <div class="container">
@@ -95,4 +100,9 @@
 <!-- Quick View Modal Start -->
 @include('layouts.quickviewmodel')
 <!-- Quick View Modal End -->
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js"
+  type="text/javascript"></script>
 @endsection

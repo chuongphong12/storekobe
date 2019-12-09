@@ -3,7 +3,7 @@
 @section('style')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all"
   rel="stylesheet" type="text/css" />
-  
+
 <style>
   .product-description * {
     color: white !important;
@@ -418,7 +418,6 @@
         
         success: function(data){
             document.getElementById("money_key").innerHTML = data;
-            
         }
         })
     })

@@ -11,7 +11,6 @@
 |
 */
 
-
 //Pages
 Route::get('/', 'PageController@index')->name('trang-chu');
 Route::get('/search', 'PageController@search')->name('search');
@@ -19,7 +18,8 @@ Route::get('/contact', 'PageController@Contact')->name('pages.contact');
 Route::post('/contact', 'ContactController@postContact')->name('contact');
 Route::post('/newletter', 'ContactController@postNewLetter')->name('newletter');
 
-Route::get('report', 'OrderChartController@index')->name('report');
+//Report
+Route::get('report', 'OrderChartController@index')->name('report')->middleware('auth');
 
 //About Us
 Route::get('/about-us', 'PageController@About')->name('pages.about');
@@ -52,39 +52,8 @@ Route::get('/product/{id}', 'ProductController@getProduct')->name('product');
 Route::get('/medium', 'ProductController@Medium_product')->name('medium');
 Route::get('/common', 'ProductController@Low_product')->name('common');
 Route::get('/milk', 'ProductController@Milk_product')->name('milk');
-Route::get('shop/{id}', 'ProductController@Filter_product')->name('product_type');
+Route::get('filter/{id}', 'ProductController@Filter_product')->name('filter');
 Route::get('product', 'ProductController@showProduct')->name('shop');
-
-//Blog
-Route::get('/bai-viet', [
-
-    'as' => 'danhmucbaiviet',
-
-    'uses' => 'BlogController@showPost'
-
-]);
-Route::get('/danh-muc-bai-viet/{id}', [
-
-    'as' => 'danh-muc',
-
-    'uses' => 'BlogController@showCategory'
-
-]);
-Route::get('/bai-viet/{id}', [
-
-    'as' => 'bai-viet',
-
-    'uses' => 'BlogController@getPost'
-
-]);
-Route::get('/tag/{id}', [
-
-    'as' => 'tag',
-
-    'uses' => 'BlogController@getTag'
-
-]);
-
 
 //Rating
 Route::post('/rating', 'ProductController@ratingProduct')->name('rating');
@@ -114,8 +83,10 @@ Route::post('change-password/{id}', 'CustomerController@passwordChange')->name('
 
 //Address
 Route::get('province', 'CustomerController@province');
+
 //Ajax
 Route::get('/ajaxData', 'ProductController@ajaxData')->name('product-ajax');
+Route::get('/ajaxOrder/{id}', 'ProductController@ajaxOrder')->name('order-ajax');
 
 //Admin
 Route::group(['prefix' => 'admin'], function () {

@@ -20,9 +20,8 @@
             <div class="footer-widget">
               <ul class="footer-menu">
                 <li><a href="{{route('trang-chu')}}">About KobeVietnam</a></li>
-                <li><a href="{{route('danhmucbaiviet')}}">News</a></li>
+                <li><a href="http://kobenews.globalmindtech.vn/">News</a></li>
                 <li><a href="{{route('pages.contact')}}">Contact</a></li>
-                <!--<li><a href="{{route('shop')}}">Hệ thống cửa hàng</a></li>-->
               </ul>
             </div>
           </div>
@@ -58,7 +57,7 @@
             <form action="{{route('newletter')}}" method="POST" class="form">
               @csrf
               <input type="email" class="form__input-newsletter mb--20" id="inputEmail" name="email"
-                placeholder="Your email address....">
+                placeholder="Your email address...." required>
               <button class="btn btn-size-sm" type="submit">
                 <span>Register</span>
               </button>

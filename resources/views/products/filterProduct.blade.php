@@ -37,10 +37,10 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h1 class="page-title">High Class</h1>
+        <h1 class="page-title">Filter Product</h1>
         <ul class="breadcrumb">
           <li><a href="{{route('trang-chu')}}">Homepage</a></li>
-          <li class="current"><span>High Class</span></li>
+          <li class="current"><span>Product</span></li>
         </ul>
       </div>
     </div>
@@ -58,7 +58,7 @@
             <div class="row align-items-center">
               <div class="col-md-5 mb-sm--30 mb-xs--10">
                 <div class="shop-toolbar__left">
-                  <div class="product-ordering">
+                  {{-- <div class="product-ordering">
                     <select id="orderId" class="product-ordering__select nice-select">
                       <option value="0">Default</option>
                       <option value="1">From A - Z</option>
@@ -66,7 +66,7 @@
                       <option value="3">Low -> High Price</option>
                       <option value="4">High -> Low Price</option>
                     </select>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
               <div class="col-md-7">
