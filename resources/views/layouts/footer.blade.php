@@ -44,13 +44,13 @@
             <h3 class="widget-title mb--35 mb-sm--20">Connect with us</h3>
             <div class="social">
               <a href="{{setting('site.facebook')}}" class="social__link">
-                <img src="/assets/img/icons/ic-facebook.svg" width="10">
+                <img src="assets/img/icons/ic-facebook.svg" width="10">
               </a>
               <a href="{{setting('site.youtube')}}" class="social__link">
-                <img src="/assets/img/icons/ic-youtube.svg" width="30">
+                <img src="assets/img/icons/ic-youtube.svg" width="30">
               </a>
               <a href="tel:{{setting('site.zalo')}}" class="social__link">
-                <img src="/assets/img/icons/ic-zalo.svg" width="30">
+                <img src="assets/img/icons/ic-zalo.svg" width="30">
               </a>
             </div>
             <p style="font-size:14px;">Sign up to receive news about products and promotions</p>
@@ -92,21 +92,21 @@
 <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
-          FB.init({
-            xfbml            : true,
-            version          : 'v4.0'
-          });
-        };
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+    FB.init({
+      xfbml            : true,
+      version          : 'v5.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 
 <!-- Your customer chat code -->
-<div class="fb-customerchat" attribution=setup_tool page_id="655527234920042" theme_color="#EB1B21"
-  logged_in_greeting="Kobe Vietnam xin chào quý khách" logged_out_greeting="Kobe Vietnam xin chào quý khách">
+<div class="fb-customerchat" attribution=setup_tool page_id="1638493286283549" theme_color="#eb1b21">
 </div>

@@ -40,7 +40,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <h1 class="page-title">Medium Class</h1>
+          <h1 class="wow tada page-title">Medium Class</h1>
           <ul class="breadcrumb">
             <li><a href="{{route('trang-chu')}}">Homepage</a></li>
             <li class="current"><span>Medium Class</span></li>

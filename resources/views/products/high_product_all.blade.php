@@ -37,7 +37,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h1 class="page-title">High Class</h1>
+        <h1 class="wow tada page-title">High Class</h1>
         <ul class="breadcrumb">
           <li><a href="{{route('trang-chu')}}">Homepage</a></li>
           <li class="current"><span>High Class</span></li>

@@ -36,13 +36,13 @@
             </div>
             <div class="social">
               <a href="{{setting('site.facebook')}}" class="social__link">
-                <img src="/assets/img/icons/ic-facebook.svg" width="10">
+                <img src="assets/img/icons/ic-facebook.svg" width="10">
               </a>
               <a href="{{setting('site.youtube')}}" class="social__link">
-                <img src="/assets/img/icons/ic-youtube.svg" width="30">
+                <img src="assets/img/icons/ic-youtube.svg" width="30">
               </a>
               <a href="tel:{{setting('site.zalo')}}" class="social__link">
-                <img src="/assets/img/icons/ic-zalo.svg" width="30">
+                <img src="assets/img/icons/ic-zalo.svg" width="30">
               </a>
             </div>
           </div>

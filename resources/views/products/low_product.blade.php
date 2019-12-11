@@ -46,7 +46,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <h1 class="page-title">Common</h1>
+          <h1 class="wow tada page-title">Common</h1>
           <ul class="breadcrumb">
             <li><a href="{{route('trang-chu')}}">Homepage</a></li>
             <li class="current"><span>Common</span></li>

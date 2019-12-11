@@ -40,7 +40,7 @@ class ContactController extends Controller
         $contact->content = $req->content;
         $contact->save();
 
-        // Mail::to('marketing@kobevietnam.com.vn')->send(new MailContact($contact));
+        Mail::to('chuongphong12@gmail.com')->send(new MailContact($contact));
         Alert::success('Congratulation', 'Your message has been sent to the customer service department');
         return redirect()->back();
     }
@@ -65,7 +65,7 @@ class ContactController extends Controller
             $news->email = $req->email;
             $news->save();
 
-            // Mail::to('marketing@kobevietnam.com.vn')->send(new MailNews($news));
+            Mail::to('chuongphong12@gmail.com')->send(new MailNews($news));
             Alert::success('Congratulation', 'Thank you for your registration!');
             return redirect()->back();
         }

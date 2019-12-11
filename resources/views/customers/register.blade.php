@@ -7,8 +7,8 @@
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto">
           <div class="register-box">
-            <h4 class="heading__tertiary mb--30 text-center">Register</h4>
-            <form class="form form--login" action="{{route('Pregister')}}" method="post">
+            <h4 class="wow tada heading__tertiary mb--30 text-center">Register</h4>
+            <form class="wow slideInUp form form--login" action="{{route('Pregister')}}" method="post">
               @csrf
               <!--@if(Session::has('thongbao'))-->
               <!--<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->

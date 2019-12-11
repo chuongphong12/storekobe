@@ -31,10 +31,10 @@
       <div class="row">
         <div class="col-md-6 mb-sm--50 ml-auto mr-auto">
           <div class="login-box">
-            <h3 class="heading__tertiary mb--30 text-center">
+            <h3 class="wow tada heading__tertiary mb--30 text-center">
               Login
             </h3>
-            <form class="form form--login mb--70" action="{{route('Plogin')}}" method="post">
+            <form class="wow fadeInLeft form form--login mb--70" action="{{route('Plogin')}}" method="post">
               @csrf
               <div class="form__group mb--20" {{ $errors->has('email') ? 'has-error' : '' }}>
                 <label class="form__label" for="email">Email or phone number:
@@ -68,7 +68,7 @@
             <div class="social-login ptb--40 border-top">
               <p>Or you can use:</p>
               <ul>
-                <li>
+                <li class="wow zoomInDown">
                   <a class="btn btn-size-sm btn-fullwidth mb--20" href="{{ route('fbredirect')}}"
                     style="background-color: rgb(59, 89, 152);">
                     <span class="logo__social">
@@ -76,7 +76,7 @@
                     </span>
                     Login in with Facebook</a>
                 </li>
-                <li>
+                <li class="wow zoomInDown">
                   <a class="btn btn-size-sm btn-fullwidth mb--20" href="{{ route('ggredirect')}}"
                     style="background-color: rgb(223, 74, 50)">
                     <span class="logo__social">

@@ -26,6 +26,8 @@ class SocialAuthFacebookController extends Controller
     {
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
         auth()->login($user);
+
+        Alert::toast('Login Success', 'success');
         return redirect()->route('trang-chu');
     }
 }

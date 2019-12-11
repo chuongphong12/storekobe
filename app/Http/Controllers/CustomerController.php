@@ -10,6 +10,7 @@ use App\OrderDetail;
 use App\Province;
 use App\District;
 use App\Role;
+use App\Status;
 use Session;
 use Hash;
 use Auth;
@@ -127,7 +128,7 @@ class CustomerController extends Controller
     public function editCustomer(Request $req)
     {
         $cus = Customer::where('user_id', Auth::id())->firstOrFail();
-        $cus->last_name = $req->fullname;
+        $cus->name = $req->fullname;
         $cus->phone = $req->phone;
         $cus->save();
         if ($cus->save()) {
@@ -189,7 +190,7 @@ class CustomerController extends Controller
             $order = Order::where('customer_id', $cus->id)->get();
             $province = Province::all();
         }
-        return view('customers.myaccount', compact('cus', 'order', 'province'));
+        return view('customers.myaccount', compact('cus', 'order', 'province', 'status'));
     }
 
     public function orderDetail($id)

@@ -1,4 +1,4 @@
-<div class="col-xl-3 col-lg-4 order-lg-1">
+<div class="wow fadeInLeft col-xl-3 col-lg-4 order-lg-1">
   <aside class="shop-sidebar">
     <div class="shop-widget mb--40">
       <h3 class="widget-title mb--25">Product Type</h3>

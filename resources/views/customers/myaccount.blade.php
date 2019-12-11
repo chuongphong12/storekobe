@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h1 class="page-title">My account</h1>
+        <h1 class="wow tada page-title">My account</h1>
         <ul class="breadcrumb">
           <li><a href="{{route('trang-chu')}}">Homepage</a></li>
           <li class="current"><span>Account</span></li>
@@ -37,19 +37,19 @@
               <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard"
                 aria-selected="true">Main page</a>
               <!--<a class="nav-link" href="{{route('logout')}}" onclick="alert('Xác nhận đăng xuất khỏi hệ thống?')">Đăng xuất</a>-->
-              <a class="nav-link logout"">Logout</a>
+              <a class="nav-link logout">Logout</a>
 
-                </div>
-                <div class=" user-dashboard-tab__content tab-content">
-                <div class="tab-pane fade show active" id="dashboard">
-                  <p>Hello <strong>{{Auth::user()->name}}</strong> (not
-                    <strong>{{Auth::user()->name}}</strong>?
-                    <a href="{{ route('logout') }}">Log out</a>)
-                  </p>
-                  <p>From your account dashboard. you can easily check &amp; view your <a
-                      href="{{route('voyager.dashboard')}}">Admin Dashboard</a>.
-                  </p>
-                </div>
+            </div>
+            <div class=" user-dashboard-tab__content tab-content">
+              <div class="tab-pane fade show active" id="dashboard">
+                <p>Hello <strong>{{Auth::user()->name}}</strong> (not
+                  <strong>{{Auth::user()->name}}</strong>?
+                  <a href="{{ route('logout') }}">Log out</a>)
+                </p>
+                <p>From your account dashboard. you can easily check &amp; view your <a
+                    href="{{route('voyager.dashboard')}}">Admin Dashboard</a>.
+                </p>
+              </div>
             </div>
             @else
             <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
@@ -66,18 +66,18 @@
             <div class=" user-dashboard-tab__content tab-content">
                 <div class="tab-pane fade" id="orders">
                   <div class="message-box mb--30 d-none">
-                    <p><i class="fa fa-check-circle"></i>Bạn chưa có đơn hàng nào.</p>
-                    <a href="#">Mua hàng</a>
+                    <p><i class="fa fa-check-circle"></i>No order has been made</p>
+                    <a href="{{route('shop')}}">Start Shoping Now</a>
                   </div>
                   <div class="table-content table-responsive">
                     <table class="table text-center">
                       <thead>
                         <tr>
-                          <th>Đơn hàng</th>
-                          <th>Ngày</th>
-                          <th>Trạng thái</th>
-                          <th>Tổng giá</th>
-                          <th>Hành động</th>
+                          <th>Order</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Total</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -85,9 +85,10 @@
                         <tr>
                           <td>{{$item->name}}</td>
                           <td class="wide-column">{{$item->created_at}}</td>
-                          <td>{{$item->status}}</td>
+                          <?php $status = DB::table('statuses')->where('id', $item->status)->first(); ?>
+                          <td>{{$status->name}}</td>
                           <td class="wide-column">{{number_format($item->total,0)}}đ</td>
-                          <td><a href="{{route('order.detail', $item->id)}}" class="btn btn-size-md">Xem</a></td>
+                          <td><a href="{{route('order.detail', $item->id)}}" class="btn btn-size-md">Detail</a></td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -95,11 +96,11 @@
                   </div>
                 </div>
                 <div class="tab-pane fade" id="addresses">
-                  <p class="mb--20">Địa chỉ dưới đây sẽ được dùng làm địa chỉ mặc định khi thanh toán.</p>
+                  <p class="mb--20">The address below will be used as the default address at checkout.</p>
                   <div class="row">
                     <div class="col-md-8 mb-sm--20">
                       <div class="text-block">
-                        <h4 class="mb--20">Địa chỉ giao hàng</h4>
+                        <h4 class="mb--20">Shipping Address</h4>
                         <br>
                         @if (!empty($cus['address']))
                         <?php 
@@ -108,10 +109,10 @@
                       ?>
                         <h4>{{$cus['address']}}, {{$dis->name}}, {{$prov->name}}</h4>
                         @else
-                        <p>Bạn chưa thêm địa chỉ giao hàng của mình.</p>
+                        <p>You have not added your shipping address.</p>
                         @endif
                         <div class="shipping-calculator-wrap">
-                          <a href="#edit_address" class="expand-btn">Chỉnh sửa</a>
+                          <a href="#edit_address" class="expand-btn">Edit</a>
                           <form id="edit_address" class="form shipping-calculator-form hide-in-default"
                             action="{{route('cus.address', $cus['id'])}}" method="POST">
                             @csrf
@@ -119,7 +120,7 @@
                               <div class="form__group mb--10">
                                 <select id="billing_provinces" name="province" class="form__input">
                                   @if(empty($cus['province']))
-                                  <option value="0" selected disable>Hãy chọn Thành Phố.....</option>
+                                  <option value="0" selected disable>Choose City.....</option>
                                   @else
                                   <option value="{{$cus['province']}}" selected>{{$prov->name}}</option>
                                   @endif
@@ -133,17 +134,17 @@
 
                                 <select name="district" class="form__input">
                                   @if(empty($cus['district']))
-                                  <option value="0" selected disabled>Hãy chọn Quận.....</option>
+                                  <option value="0" selected disabled>Choose District.....</option>
                                   @else
                                   <option value="{{$cus['district']}}" selected>{{$dis->name}}</option>
                                   @endif
                                 </select>
                               </div>
                               <input type="text" name="address" id="calc_shipping_city" class="form__input"
-                                placeholder="Số nhà và tên đường" value="{{ $cus['address'] }}">
+                                placeholder="Address and street name" value="{{ $cus['address'] }}">
                             </div>
                             <div class="form__group">
-                              <input type="submit" value="Cập nhật" class="btn btn-size-sm">
+                              <input type="submit" value="Update" class="btn btn-size-sm">
                             </div>
                           </form>
                         </div>
@@ -159,13 +160,13 @@
                     <div class="row mb--20">
                       <div class="col-md-6 mb-sm--20">
                         <div class="form__group">
-                          <label class="form__label" for="f_name">Họ Tên <span class="required">*</span></label>
+                          <label class="form__label" for="f_name">Fullname <span class="required">*</span></label>
                           <input type="text" name="fullname" id="f_name" class="form__input" value="{{ $cus['name'] }}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form__group">
-                          <label class="form__label" for="l_name">Số diện thoại <span class="required">*</span></label>
+                          <label class="form__label" for="l_name">Phone number <span class="required">*</span></label>
                           <input type="text" name="phone" id="l_name" class="form__input" value="{{ $cus['phone'] }}">
                         </div>
                       </div>
@@ -173,17 +174,7 @@
                     <div class="row mb--20">
                       <div class="col-12">
                         <div class="form__group">
-                          <label class="form__label" for="d_name">Tên người dùng <span class="required">*</span></label>
-                          <input type="text" name="d_name" id="d_name" class="form__input" value="{{ $cus['name'] }}"
-                            readonly>
-                          <span class="form__notes"><em>Đây là tên hiển thị của bạn trên toàn bộ hệ thống</em></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mb--20">
-                      <div class="col-12">
-                        <div class="form__group">
-                          <label class="form__label" for="email">Địa chỉ email: <span class="required">*</span></label>
+                          <label class="form__label" for="email">Email address: <span class="required">*</span></label>
                           <input type="email" name="email" id="email" class="form__input" value="{{ $cus['email'] }}"
                             readonly>
                         </div>
@@ -195,12 +186,12 @@
                     class="form form--account">
                     @csrf
                     <fieldset class="form__fieldset mb--20">
-                      <legend class="form__legend">Thay đổi mật khẩu</legend>
+                      <legend class="form__legend">Change password</legend>
                       <div class="row mb--20">
                         <div class="col-12">
                           <div class="form__group">
-                            <label class="form__label" for="cur_pass">Mật khẩu hiện tại
-                              (để trống nếu không thay đổi)</label>
+                            <label class="form__label" for="cur_pass">Current Password
+                              (Leave empty if unchange)</label>
                             <input type="password" name="cur_pass" id="cur_pass" class="form__input">
                           </div>
                         </div>
@@ -208,8 +199,8 @@
                       <div class="row mb--20">
                         <div class="col-12">
                           <div class="form__group">
-                            <label class="form__label" for="new_pass">Mật khẩu mới
-                              (để trống nếu không thay đổi)</label>
+                            <label class="form__label" for="new_pass">New password
+                              (Leave empty if unchange)</label>
                             <input type="password" name="new_pass" id="new_pass" class="form__input">
                           </div>
                         </div>
@@ -217,8 +208,7 @@
                       <div class="row">
                         <div class="col-12">
                           <div class="form__group">
-                            <label class="form__label" for="conf_new_pass">Xác nhận mật khẩu
-                              mới</label>
+                            <label class="form__label" for="conf_new_pass">Confirm new password</label>
                             <input type="password" name="conf_new_pass" id="conf_new_pass" class="form__input">
                           </div>
                         </div>
@@ -229,20 +219,18 @@
                   <div class="row">
                     <div class="col-12 d-flex">
                       <div class="form__group">
-                        <input id="edit-btn" type="submit" value="Lưu Thông Tin" class="btn btn-size-md">
+                        <input id="edit-btn" type="submit" value="Save Information" class="btn btn-size-md">
                       </div>
                       @if (empty(Auth::user()->provider_id))
                       <div class="form__group ml--20">
-                        <input id="password-btn" type="submit" value="Cập nhật mật khẩu" class="btn btn-size-md">
+                        <input id="password-btn" type="submit" value="Update Password" class="btn btn-size-md">
                       </div>
                       @endif
                     </div>
                   </div>
-
                 </div>
             </div>
             @endif
-
           </div>
         </div>
       </div>
@@ -257,7 +245,7 @@
 <script>
   $(document).ready(function(){
 	$(".logout").click(function() {
-		if(confirm('Bạn có chắc muốn đăng xuất?')) {
+		if(confirm('Do you want to logout?')) {
             location.href = '{{ route('logout') }}';
         }
     });
@@ -290,5 +278,4 @@
     });
 });
 </script>
-
 @endsection

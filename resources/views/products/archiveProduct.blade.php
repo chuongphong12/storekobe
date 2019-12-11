@@ -1,12 +1,17 @@
 @extends('master')
 
+@section('style')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all"
+  rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 <!-- Breadcrumb area Start -->
 <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h1 class="page-title">All product</h1>
+        <h1 class="wow tada page-title">All product</h1>
         <ul class="breadcrumb">
           <li><a href="{{route('trang-chu')}}">Homepage</a></li>
           <li class="current"><span>All product</span></li>
@@ -19,7 +24,6 @@
 
 <!-- Main Content Wrapper Start -->
 <div class="main-content-wrapper">
-
   {{-- High Product --}}
   <div class="brand-logo-area section-break">
     <div class="container">
@@ -31,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="wow fadeInUp row justify-content-center">
         <div class="col-12">
           <div class="element-carousel slick-vertical-center" data-slick-options='{
                                     "spaceBetween": 30,
@@ -106,7 +110,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="wow fadeInUp row justify-content-center">
         <div class="col-12">
           <div class="element-carousel slick-vertical-center" data-slick-options='{
                                     "spaceBetween": 30,
@@ -181,7 +185,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="wow fadeInUp row justify-content-center">
         <div class="col-12">
           <div class="element-carousel slick-vertical-center" data-slick-options='{
                                       "spaceBetween": 30,
@@ -256,7 +260,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="wow fadeInUp row justify-content-center">
         <div class="col-12">
           <div class="element-carousel slick-vertical-center" data-slick-options='{
                                       "spaceBetween": 30,
@@ -326,4 +330,9 @@
 <!-- Quick View Modal Start -->
 @include('layouts.quickviewmodel')
 <!-- Quick View Modal End -->
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js"
+  type="text/javascript"></script>
 @endsection

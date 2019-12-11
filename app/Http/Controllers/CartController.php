@@ -55,7 +55,6 @@ class CartController extends Controller
     } else {
       Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $req->qty, 'price' => $pro->price, 'weight' => 1, 'options' => ['size' => $req->weight]])->associate('App\Product');
     }
-
     Alert::toast('Success add to cart!', 'success');
     return redirect()->back();
   }
@@ -116,14 +115,14 @@ class CartController extends Controller
         'billing_districts' => 'required',
       ],
       [
-        'name.min' => 'Tên quá ngắn',
-        'email.required' => 'Vui lòng nhập email',
-        'email.email' => 'Vui lòng nhập đúng định dạng',
-        'phone.required' => 'Vui lòng nhập số điện thoại',
-        'phone.numeric' => 'Vui lòng nhập số điện thoại',
-        'address.required' => 'Vui lòng nhập địa chỉ',
-        'billing_provinces.required' => 'Vui lòng chọn thành phố',
-        'billing_districts.required' => 'Vui lòng chọn quận/huyện',
+        'name.min' => 'Name to short',
+        'email.required' => 'Please input your email',
+        'email.email' => 'Please input correct format',
+        'phone.required' => 'Please input your phone number',
+        'phone.numeric' => 'Invalid number format',
+        'address.required' => 'Please provide your address',
+        'billing_provinces.required' => 'Please choose your province',
+        'billing_districts.required' => 'Please choose your district',
       ]
     );
 
@@ -173,8 +172,8 @@ class CartController extends Controller
       $product->save();
     }
 
-    // Mail::to($req->email)->send(new MailOrder($bill_detail));
-    // Mail::to('marketing@kobevietnam.com.vn')->send(new OrderNoti($cus));
+    Mail::to($req->email)->send(new MailOrder($bill_detail));
+    Mail::to('chuongphong12@gmail.com')->send(new OrderNoti($cus));
     Cart::destroy();
   }
 
